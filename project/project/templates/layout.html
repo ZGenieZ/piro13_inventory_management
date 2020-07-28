@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>공통 layout</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      nav {
+        padding: 2rem;
+        background-color: slategray;
+      }
+      #title {
+        display: inline-block;
+        color: silver;
+        font-size: 2rem;
+      }
+      #menu {
+        display: inline-block;
+        float: right;
+      }
+
+      #menu ul {
+        display: flex;
+      }
+
+      #menu li {
+        list-style: none;
+        padding-left: 1rem;
+        color: white;
+      }
+      .container {
+        text-align: center;
+      }
+      #main_title {
+        display: inline-block;
+        padding-top: 3rem;
+      }
+      #main_content {
+        margin-top: 3rem;
+        background-color: lightgray;
+      }
+      #primary_title {
+        font-size: 3rem;
+      }
+      #secondary_title {
+        padding-top: 2rem;
+      }
+    </style>
+    <!-- 합쳐지고 최소화된 최신 CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"
+    />
+
+    <!-- 부가적인 테마 -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"
+    />
+  </head>
+  <body>
+    <nav>
+      <div id="title">
+        <a href="{% url 'shop:item_list'%}">Inventory Manage</a>
+      </div>
+      <div id="menu">
+        <ul>
+          <li>상품 등록</li>
+          <li>거래처 등록</li>
+          <li>거래처 관리</li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      <div id="main_title">
+        <div id="primary_title">{% block title %}{% endblock %}</div>
+        <div id="secondary_title">
+          {% block menu %}{% endblock %} 페이지 입니다.
+        </div>
+      </div>
+      <div id="main_content">{% block content %} {% endblock %}</div>
+    </div>
+
+    <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

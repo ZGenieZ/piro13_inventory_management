@@ -1,0 +1,13 @@
+{% extends "layout.html" %} {% block title %} Item List {% endblock %} 
+{% block menu %} 상품 목록 {% endblock %} {% block content %}
+<div class="wrap" style="display: flex; justify-content: space-around;">
+  {% for item in items %}
+  <div id="item_list" style="display: inline-block;">
+    <div id="item_image">{{item.image}}</div>
+    <div id="item_title">{{item.title}}</div>
+    <div id="item_price">가격 : {{item.price}}</div>
+    <div id="item_number">남은 수량 : {{item.amount}}</div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

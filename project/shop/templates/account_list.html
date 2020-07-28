@@ -1,0 +1,12 @@
+{% extends "layout.html"%}{% block title %} Account List {% endblock %} 
+{% block menu %} 거래처 목록 {% endblock %} {% block content %}
+<div class="wrap" style="display: flex; justify-content: space-around;">
+  {% for account in accounts %}
+  <div id="account_list" style="display: inline-block;">
+    <div id="account_name">{{account.name}}</div>
+    <div id="account_call">{{account.call}}</div>
+    <div id="account_address">{{account.address}}</div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
