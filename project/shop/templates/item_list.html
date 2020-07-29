@@ -1,9 +1,9 @@
 {% extends "layout.html" %} {% block title %} Item List {% endblock %} 
 {% block menu %} 상품 목록 {% endblock %} {% block content %}
-<div class="wrap" style="display: flex; justify-content: space-around;">
+<div class="wrap" style="display: flex; justify-content: space-around; flex-wrap:wrap; background-color:silver;">
   {% for item in items %}
-  <div id="item_list" style="display: inline-block;">
-    <div id="item_image">{{item.image}}</div>
+  <div id="item_list" style="display: inline-block; margin-bottom: 3rem;" class="col-md-4">
+    <div id="item_image"><a href="{% url 'shop:item_detail' item.pk %}"><img src="{{item.image.url}}" style="width:100%; height:100%" /></a></div>
     <div id="item_title">{{item.title}}</div>
     <div id="item_price">가격 : {{item.price}}</div>
     <div id="item_number">남은 수량 : {{item.amount}}</div>

@@ -13,7 +13,7 @@ class Accounter(models.Model):
 
 class Item(models.Model):
     title = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='shop/photo')
+    image = models.ImageField()
     content = models.TextField()
     price = models.PositiveIntegerField(default=0)
     amount = models.PositiveIntegerField(default=0)
@@ -23,5 +23,9 @@ class Item(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('shop:item_detail',args=[self.pk])
+        # return reverse('shop:item_detail',kwargs={'pk' : self.pk}) <- 똑같음
 
 

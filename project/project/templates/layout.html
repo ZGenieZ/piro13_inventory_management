@@ -20,6 +20,12 @@
         color: silver;
         font-size: 2rem;
       }
+
+      #title a {
+        text-decoration: none;
+        color: rgb(58, 55, 55);
+      }
+
       #menu {
         display: inline-block;
         float: right;
@@ -34,6 +40,19 @@
         padding-left: 1rem;
         color: white;
       }
+
+      #account_management {
+        text-decoration: none;
+        color: white;
+      }
+      #enroll_item {
+        text-decoration: none;
+        color: white;
+      }
+      #enroll_account {
+        text-decoration: none;
+        color: white;
+      }
       .container {
         text-align: center;
       }
@@ -43,13 +62,21 @@
       }
       #main_content {
         margin-top: 3rem;
-        background-color: lightgray;
+        /* background-color: lightgray; */
+      }
+
+      td {
+        text-align: left;
       }
       #primary_title {
         font-size: 3rem;
       }
       #secondary_title {
         padding-top: 2rem;
+      }
+
+      .footer {
+        text-align: left;
       }
     </style>
     <!-- 합쳐지고 최소화된 최신 CSS -->
@@ -71,9 +98,19 @@
       </div>
       <div id="menu">
         <ul>
-          <li>상품 등록</li>
-          <li>거래처 등록</li>
-          <li>거래처 관리</li>
+          <li>
+            <a href="{% url 'shop:item_new' %}" id="enroll_item">상품 등록</a>
+          </li>
+          <li>
+            <a href="{% url 'shop:account_new' %}" id="enroll_account"
+              >거래처 등록</a
+            >
+          </li>
+          <li>
+            <a href="{% url 'shop:account_list' %}" id="account_management"
+              >거래처 관리</a
+            >
+          </li>
         </ul>
       </div>
     </nav>
@@ -85,9 +122,15 @@
         </div>
       </div>
       <div id="main_content">{% block content %} {% endblock %}</div>
+      <hr />
+      <div class="footer">
+        <span>피로그래밍 | 13기 이진희</span>
+        <p>경기대학교 공과대학 컴퓨터공학부입니다.</p>
+      </div>
     </div>
-
     <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+    <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   </body>
 </html>

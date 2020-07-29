@@ -1,0 +1,53 @@
+{% extends "layout.html"%}{% block title %} Item Detail {% endblock %}
+<!-- -->
+{% block menu %} 상품 세부내용 {% endblock %} {% block content %}
+<div class="row">
+  <div id="item_photo" style="display: inline-block;" class="col-md-6">
+    <img src="{{item.image.url}}" alt="아이템_사진" style="width: 100%;" />
+  </div>
+  <div id="item_content" class="col-md-6" style="text-align: left;">
+    <h1>{{item.title}}</h1>
+    <div>가격 : {{item.price}}</div>
+    <div>남은 수량 : {{item.amount}}</div>
+    <div>제품 설명 :</div>
+    <br />
+    <p>{{item.content}}</p>
+    <h2>거래처 : {{item.account}}</h2>
+  </div>
+</div>
+<hr />
+<div
+  class="item_option"
+  style="
+    position: relative;
+    width: 100%;
+    display: inline-block;
+    margin-top: -1.5rem;
+  "
+>
+  <div class="option_left" style="display: inline-block; float: left;">
+    <a
+      class="btn btn-danger"
+      href="{% url 'shop:item_delete' item.pk %}"
+      role="button"
+      >삭제</a
+    >
+  </div>
+  <div class="option_right" style="display: inline-block; float: right;">
+    <a
+      class="btn"
+      href="{% url 'shop:item_list' %}"
+      role="button"
+      style="background-color: rgb(142, 189, 142); color: white;"
+      >목록</a
+    >
+    <a
+      class="btn"
+      href="{% url 'shop:item_edit' item.pk%}"
+      role="button"
+      style="background-color: rgb(95, 126, 95); color: white;"
+      >수정</a
+    >
+  </div>
+</div>
+{% endblock %}
