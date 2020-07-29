@@ -1,13 +1,84 @@
-{% extends "layout.html" %} {% block title %} Item List {% endblock %} 
+{% extends "layout.html" %} {% block title %} Item List {% endblock %}
+<!---->
 {% block menu %} 상품 목록 {% endblock %} {% block content %}
-<div class="wrap" style="display: flex; justify-content: space-around; flex-wrap:wrap; background-color:silver;">
+<div
+  class="wrap"
+  style="
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    background-color: lightgray;
+  "
+>
   {% for item in items %}
-  <div id="item_list" style="display: inline-block; margin-bottom: 3rem;" class="col-md-4">
-    <div id="item_image"><a href="{% url 'shop:item_detail' item.pk %}"><img src="{{item.image.url}}" style="width:100%; height:100%" /></a></div>
+  <div
+    id="item_list"
+    style="display: inline-block; text-align: left; padding: 2rem;"
+    class="col-md-4"
+  >
+    <div id="item_image">
+      <a href="{% url 'shop:item_detail' item.pk %}"
+        ><img src="{{item.image.url}}" style="width: 100%; height: 100%;"
+      /></a>
+    </div>
     <div id="item_title">{{item.title}}</div>
     <div id="item_price">가격 : {{item.price}}</div>
-    <div id="item_number">남은 수량 : {{item.amount}}</div>
+    <div id="item_number">
+      남은 수량 : <span class="item_amount_{{item.pk}}">{{item.amount}}</span>
+    </div>
+    <button
+      type="button"
+      class="plus_btn"
+      style="background-color: rgb(95, 126, 95); color: white;"
+    >
+      +
+    </button>
+    <button
+      type="button"
+      class="minus_btn"
+      style="background-color: rgb(95, 126, 95); color: white;"
+    >
+      -
+    </button>
   </div>
   {% endfor %}
 </div>
+{% endblock %} {% block js %}
+<script>
+  $(".plus_btn").click(function (e) {
+    let number = $(e.target).siblings("#item_number")[0].childNodes[1]
+      .textContent;
+    let pk = $(e.target)
+      .siblings("#item_number")[0]
+      .childNodes[1].className.replace("item_amount_", "");
+
+    $.ajax({
+      url: "{% url 'shop:ajax_plus' %}",
+      dataType: "json",
+      data: { number: number, pk: pk },
+      success: function (response) {
+        $(e.target).siblings("#item_number")[0].childNodes[1].textContent =
+          response.data;
+      },
+    });
+  });
+
+  $(".minus_btn").click(function (e) {
+    let s_number = $(e.target).siblings("#item_number")[0].childNodes[1]
+      .textContent;
+    let s_pk = $(e.target)
+      .siblings("#item_number")[0]
+      .childNodes[1].className.replace("item_amount_", "");
+
+    $.ajax({
+      url: "{% url 'shop:ajax_minus' %}",
+      dataType: "json",
+      data: { number: s_number, pk: s_pk },
+      success: function (response) {
+        $(e.target).siblings("#item_number")[0].childNodes[1].textContent =
+          response.data;
+      },
+    });
+  });
+</script>
 {% endblock %}
