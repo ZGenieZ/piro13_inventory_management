@@ -79,6 +79,9 @@
 
       .footer {
         text-align: left;
+        position: fixed;
+        width: 100%;
+        bottom: 0;
       }
     </style>
     <!-- 합쳐지고 최소화된 최신 CSS -->
@@ -120,14 +123,30 @@
     </nav>
     <div class="container">
       <div id="main_title">
-        <div id="primary_title">{% block title %}{% endblock %}</div>
-        <div id="secondary_title">
+        <div
+          id="primary_title"
+          style="font-weight: bold; font-size: 4rem; color: rgb(105, 143, 105);"
+        >
+          {% block title %}{% endblock %}
+        </div>
+        <div
+          id="secondary_title"
+          style="
+            font-size: 1.7rem;
+            color: rgb(112, 112, 112);
+            font-weight: 500;
+          "
+        >
           {% block menu %}{% endblock %} 페이지 입니다.
         </div>
       </div>
       <div id="main_content">{% block content %} {% endblock %}</div>
-      <hr />
-      <div class="footer">
+
+      <div
+        class="footer container"
+        style="padding-left: 0; padding-right: 3rem;"
+      >
+        <hr />
         <span>피로그래밍 | 13기 이진희</span>
         <p>경기대학교 공과대학 컴퓨터공학부입니다.</p>
       </div>

@@ -1,11 +1,37 @@
-{% extends "layout.html"%}{% block title %} Account List {% endblock %} 
+{% extends "layout.html"%}{% block title %} Account List {% endblock %}
+<!---->
 {% block menu %} 거래처 목록 {% endblock %} {% block content %}
-<div class="wrap" style="display: flex; justify-content: space-around;flex-wrap:wrap;">
+<div
+  class="wrap"
+  style="display: flex; justify-content: space-around; flex-wrap: wrap;"
+>
   {% for account in accounts %}
-  <div id="account_list" style="display: inline-block; margin-bottom: 3rem;" class="col-md-4"">
-    <div id="account_name"><a href="{% url 'shop:account_detail' account.pk%}">{{account.name}}</a></div>
-    <div id="account_call">{{account.call}}</div>
-    <div id="account_address">{{account.address}}</div>
+  <div
+    class="account_list col-md-3"
+    style="
+      display: inline-block;
+      background-color: rgb(179, 216, 179);
+      margin: 1rem;
+      padding: 2rem;
+      text-align: left;
+      border-radius: 0.5rem;
+    "
+  >
+    <div class="account_name">
+      <a
+        href="{% url 'shop:account_detail' account.pk%}"
+        style="
+          text-decoration: none;
+          color: black;
+          font-size: 20px;
+          font-weight: bold;
+        "
+        >{{account.name}}</a
+      >
+    </div>
+    <hr style="margin: 0.5rem;" />
+    <div class="account_call">{{account.call}}</div>
+    <div class="account_address">{{account.address}}</div>
   </div>
   {% endfor %}
 </div>

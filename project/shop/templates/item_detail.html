@@ -6,13 +6,29 @@
     <img src="{{item.image.url}}" alt="아이템_사진" style="width: 100%;" />
   </div>
   <div id="item_content" class="col-md-6" style="text-align: left;">
-    <h1>{{item.title}}</h1>
-    <div>가격 : {{item.price}}</div>
-    <div>남은 수량 : {{item.amount}}</div>
-    <div>제품 설명 :</div>
+    <div style="font-size: 2rem; font-weight: bold; margin-bottom: 2rem;">
+      {{item.title}}
+    </div>
+    <div style="color: rgb(95, 126, 95); font-size: 1.5rem; font-weight: 800;">
+      가격 :
+      <span style="font-size: 1.5rem; font-weight: normal;"
+        >{{item.price}}</span
+      >
+    </div>
+    <div style="color: rgb(95, 126, 95); font-size: 1.5rem; font-weight: 800;">
+      남은 수량 :
+      <span style="font-size: 1.5rem; font-weight: normal;"
+        >{{item.amount}}</span
+      >
+    </div>
+    <div style="color: rgb(95, 126, 95); font-size: 1.5rem; font-weight: 800;">
+      제품 설명 :
+    </div>
     <br />
-    <p>{{item.content}}</p>
-    <h2>거래처 : {{item.account}}</h2>
+    <p style="color: rgb(95, 126, 95); font-size: 1.6rem;">{{item.content}}</p>
+    <div style="font-size: 2rem; font-weight: bold; margin-bottom: 2rem;">
+      거래처 : <span style="color: rgb(95, 126, 95);">{{item.account}}</span>
+    </div>
   </div>
 </div>
 <hr />
